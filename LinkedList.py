@@ -31,8 +31,20 @@ class LinkedList:
 
         rslt = ' --> '.join(rslt_list)
         return rslt
+
+    def append(self, value):
+        new_node = Node(value)
+
+        if self.head:
+            self.tail.next = new_node
+            self.tail = new_node
+        else:
+            self.head = new_node
+            self.tail = new_node
             
 L = LinkedList(10)
-L.head.next = Node(20)
-L.head.next.next = Node(30)
 print(L)
+
+L.append(20)
+L.append(30)
+print(L, 'after append')
