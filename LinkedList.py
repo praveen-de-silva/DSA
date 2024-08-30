@@ -41,7 +41,10 @@ class LinkedList:
         else:
             self.head = new_node
             self.tail = new_node
-            
+
+        self.length += 1
+
+# -------------------------------------------------
 L = LinkedList(10)
 print(L)
 
