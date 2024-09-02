@@ -44,6 +44,9 @@ class LinkedList:
 
         self.length += 1
 
+    def prepend(self, value):
+        pass
+
 # -------------------------------------------------
 L = LinkedList(10)
 print(L)
