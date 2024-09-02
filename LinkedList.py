@@ -45,7 +45,16 @@ class LinkedList:
         self.length += 1
 
     def prepend(self, value):
-        pass
+        new_node = Node(value)
+
+        if self.head:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            self.head = new_node
+            self.tail = new_node
+
+        self.length += 1
 
 # -------------------------------------------------
 L = LinkedList(10)
@@ -54,3 +63,6 @@ print(L)
 L.append(20)
 L.append(30)
 print(L, 'after append')
+
+L.prepend(5)
+print(L, 'after prepend')
