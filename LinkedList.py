@@ -56,6 +56,9 @@ class LinkedList:
 
         self.length += 1
 
+    def insert():
+        
+
 # -------------------------------------------------
 L = LinkedList(10)
 print(L)
