@@ -56,8 +56,10 @@ class LinkedList:
 
         self.length += 1
 
-    def insert():
-        
+    def insert(self, index, value):
+        pass
+
+
 
 # -------------------------------------------------
 L = LinkedList(10)
