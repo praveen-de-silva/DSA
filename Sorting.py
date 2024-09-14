@@ -62,14 +62,14 @@ def insertionSort(array):
     size = len(array)
     
     for j in range(size):
-        for i in range(j):
-            if array[i]>array[j]:
-                tempInsert = array[j]
-                array.pop(j)
-                array.insert(i, tempInsert)
-                break
-            print(array[i], end=', ')
-        print()
+        key = array[j]
+        i = j-1
+
+        while i>=0 and key < array[i]:
+            array[i+1] = array[i]
+            i -= 1
+            
+        array[i+1] = key
 
 arr1 = [7,6,5,1,2,3,4]
 insertionSort(arr1)
