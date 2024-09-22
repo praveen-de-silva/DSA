@@ -250,6 +250,10 @@ def mergeSort2(array, l, r):
 # Quick Sort
 # ----------
 
+#   * sorting by deviding items to several buckets
+#   * timeComplexity  : O(log(n))
+#     spaceComplexity : O(n)
+
 def swap(array, index_1, index_2):
     array[index_1], array[index_2] = array[index_2], array[index_1]
 
