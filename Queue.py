@@ -16,7 +16,7 @@ class Queue:
             return True
         return False
 
-    def insert(self, item):
+    def enqueue(self, item):
         if self.length<self.size:
             self.buffer[self.length] = item
             self.length += 1
@@ -24,7 +24,7 @@ class Queue:
         print('Queue is already full!')
         return False
 
-    def remove(self):
+    def dequeue(self):
         if not self.isEmpty():
             pop_item = self.buffer[0]
             
@@ -52,13 +52,13 @@ class Queue:
 q1 = Queue(5)
 print(f'Is Empty : {q1.isEmpty()}')
 
-q1.remove()
-q1.insert(2)
-q1.insert(4)
-q1.insert(6)
-q1.insert(8)
-q1.insert(10)
-q1.insert(12)
+q1.dequeue()
+q1.enqueue(2)
+q1.enqueue(4)
+q1.enqueue(6)
+q1.enqueue(8)
+q1.enqueue(10)
+q1.enqueue(12)
 
 print(f'length : {q1.getLength()}')
 print(f'head : {q1.getHead()}')
