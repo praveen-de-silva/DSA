@@ -9,7 +9,7 @@ class Stack:
         self.length = 0
 
     def __str__(self):
-        return f'{self.buffer}' # to show the queue
+        return f'{self.buffer}' # to show the stack
 
     def isEmpty(self):
         if self.length==0:
