@@ -1,3 +1,5 @@
+import Queue as queue
+
 class BSTNode:
     def __init__(self, data):
         self.data = data
@@ -38,7 +40,30 @@ def inOrderTraversal(rootNode):
     inOrderTraversalOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
     inOrderTraversalOrderTraversal(rootNode.leftChild)
+
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return None
+    
+    postOrderTraversalOrderTraversal(rootNode.rightChild)
+    postOrderTraversalOrderTraversal(rootNode.leftChild)
+    print(rootNode.data)
             
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+
+        while not customQueue.isEmpty():
+            crntNode = customQueue.dequeue()
+            print(crntNode.value)
+
+            if crntNode.leftChild:
+                customQueue.enqueue(crntNode.leftChild)
+            if crntNode.rightChild:
+                customQueue.enqueue(crntNode.rightChild)
 
 
 bst = BSTNode(70)
@@ -57,5 +82,5 @@ insertNode(bst, 10)
 insertNode(bst, 95)
 
 # print(bst.rightChild.rightChild.data)
-preOrderTraversal(bst)
+levelOrderTraversal(bst)
 
