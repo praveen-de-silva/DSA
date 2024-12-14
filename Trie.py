@@ -10,5 +10,17 @@ class Trie:
     def insertString(self, word):
         current = self.root
         
+        for i in word:
+            ch = i
+            node = current.children.get(ch)
+
+            if node == None:
+                node = TrieNode()
+                current.children[ch] = node
+            current = node
+        current.endOfString = True
+        return "Inserted successfully!"
 
 trie = Trie()
+trie.insertString("APP")
+print(trie.insertString("API"))
