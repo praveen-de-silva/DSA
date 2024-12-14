@@ -109,6 +109,60 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
+def getMinValueNode(rootNode):
+    if rootNode is None or rootNode.leftChild is None:
+        return rootNode
+    return getMinValueNode(rootNode.leftChild)
+
+def deleteNode(rootNode, nodeValue):
+    # case 1 : rootNode is None
+    if not rootNode:
+        return rootNode
+
+    # case 2 : rotation is not required
+    elif nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        # case 2.1 : 'node' to be deleted has a child
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        else:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        
+        # case 2.2 : 'node' to be deleted has 2 children
+        temp = getMinValueNode(rootNode.rightChild)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+
+    # case 3 : rotation is required
+    balance = getBalance(rootNode)
+    if balance > 1 and getBalance(rootNode.leftChild) >= 0:
+        return rightRotate(rootNode)
+    if balance < -1 and getBalance(rootNode.rightChild) <= 0:
+        return leftRotate(rootNode)
+    if balance > 1 and getBalance(rootNode.leftChild) < 0:
+        rootNode.leftChild = leftRotate(rootNode.leftChild)
+        return rightRotate(rootNode)
+    if balance < -1 and getBalance(rootNode.rightChild) > 0:
+        rootNode.rightChild = rightRotate(rootNode.rightChild)
+        return leftRotate(rootNode)
+    return rootNode
+
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "AVL has been successfully deleted!"
+
+
+
+
 avl = AVLNode(5)
 avl = insertNode(avl, 10)
 avl = insertNode(avl, 15)
@@ -116,4 +170,6 @@ avl = insertNode(avl, 20)
 
 levelOrderTraversal(avl)
 
+# avl = deleteNode(avl, 20)
+# levelOrderTraversal(avl)
 
