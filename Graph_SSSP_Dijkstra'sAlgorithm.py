@@ -49,10 +49,10 @@ class Dijkstra:
                 target = edge.targetVert
                 newDist = start.minDist + edge.weight
 
-                if newDist < target.weight:
+                if newDist < target.minDist:
                     target.weight = newDist
                     target.predecessor = start
-                    heapq.heappush(self.push, target)
+                    heapq.heappush(self.heap, target) # update the heap
 
             actualVert.visited = True
     
@@ -69,5 +69,30 @@ class Dijkstra:
 
 a = Node("A")
 b = Node("B")
+c = Node("C")
+d = Node("D")
+e = Node("E")
+f = Node("F")
+g = Node("G")
+h = Node("H")
 
-print(a<b)
+a.addEdge(6, b)
+a.addEdge(10, c)
+b.addEdge(5, d)
+b.addEdge(16, e)
+b.addEdge(13, f)
+c.addEdge(6, d)
+c.addEdge(21, g)
+c.addEdge(5, h)
+d.addEdge(8, f)
+d.addEdge(7, h)
+e.addEdge(10, g)
+f.addEdge(4, e)
+f.addEdge(12, g)
+h.addEdge(2, f)
+h.addEdge(14, g)
+
+dijkstra = Dijkstra()
+
+dijkstra.calculate(a)
+dijkstra.getShortestPath(b)
